@@ -1,20 +1,24 @@
 import React from 'react';
-import {BookContextNewProvider} from './context/BookContextNew'
+import { BookContextProvider } from './context/BookContextNew'
 import BookList from './components/BookList'
+import { Navbar } from './components/Navbar';
+import { BookForm } from './components/BookForm';
 
 
 
 function App() {
 
-return(
-<div>
-     <BookContextNewProvider>
-     <BookList/>
- </BookContextNewProvider>
-</div>
+    return (
+        <div className="App">
+            <BookContextProvider>
+                <Navbar />
+                <BookList />
+                <BookForm/>
+            </BookContextProvider>
+        </div>
 
-);
- 
+    );
+
 }
 
 export default App;

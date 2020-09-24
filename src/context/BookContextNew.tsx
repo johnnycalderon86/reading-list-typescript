@@ -1,28 +1,45 @@
-import React, { useState } from "react";
-
+import React, { createContext, useState } from "react";
+import { v4 as uuidv4 } from 'uuid';
 export interface IBook {
   title: string;
-  id: string;
+  id: string
   author: string;
 }
 
-export interface BookContext {
+export interface IBookContext {
   books: IBook[];
+  addbook: (a: string, b: string) => void;
+  removeBook: (a: string) => void;
+
 }
 
-export const BookContextNew = React.createContext<BookContext>({
-  books: [{ title: 'null', id: "0", author: "loading" }],
+type Props = {
+  children?: React.ReactNode
+}
+
+export const BookContext = createContext<IBookContext>({
+  books: [{ title: "null", id: "1", author: "null" }], removeBook: () => { }, addbook: () => { }
 });
 
-export const BookContextNewProvider: React.FC<{}> = (props) => {
+export const BookContextProvider: React.FC = ({ children }: Props) => {
   const [books, setBooks] = useState<IBook[]>([
-    { title: "Name of the wind", author: "patrick rothfuss", id: "1" },
-    { title: "The final empire", author: "brandon sanderson", id: "2" },
+    { title: "cunt", id: "2345", author: "cuntingson" }
   ]);
 
+
+
+  const addbook = (title: string, author: string) => {
+    setBooks([
+      ...books, { title, author, id: uuidv4() },
+    ])
+  }
+  const removeBook = (id: string) => {
+    setBooks(books.filter(book => book.id !== id))
+  }
+
   return (
-    <BookContextNew.Provider value={{ books }}>
-      {props.children}
-    </BookContextNew.Provider>
+    <BookContext.Provider value={{ books, addbook, removeBook }}>
+      {children}
+    </BookContext.Provider>
   );
 };
