@@ -1,5 +1,6 @@
 import React, { createContext, useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
+
 export interface IBook {
   title: string;
   id: string
@@ -18,8 +19,8 @@ type Props = {
 }
 
 export const BookContext = createContext<IBookContext>({
-  books: [{ title: "null", id: "1", author: "null" }], removeBook: () => { }, addbook: () => { }
-});
+
+} as IBookContext);
 
 export const BookContextProvider: React.FC = ({ children }: Props) => {
   const [books, setBooks] = useState<IBook[]>([
