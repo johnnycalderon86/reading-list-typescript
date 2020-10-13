@@ -22,7 +22,6 @@ body {
 .navbar h1{
   margin: 10px 0;
 }
-
 .book-list{
   margin: 20px;
 }
@@ -38,7 +37,7 @@ body {
   margin: 10px 0;
 }
 .book-list li:hover{
-  opacity: 0.7;
+  opacity: 0.3;
   text-decoration: line-through;
 }
 .book-list .title{
@@ -47,7 +46,7 @@ body {
   font-size: 1.2em;
 }
 .book-list .author{
-  font-size: 0.9em;
+  font-size: 0.8em;
   color: #ddd;
 }
 .empty{

@@ -1,5 +1,5 @@
 import React, { createContext, useState } from "react";
-import { v4 as uuidv4 } from 'uuid';
+
 
 export interface IBook {
   title: string;
@@ -18,20 +18,18 @@ type Props = {
   children?: React.ReactNode
 }
 
-export const BookContext = createContext<IBookContext>({
-
-} as IBookContext);
+export const BookContext = createContext<IBookContext>({} as IBookContext);
 
 export const BookContextProvider: React.FC = ({ children }: Props) => {
   const [books, setBooks] = useState<IBook[]>([
-    { title: "cunt", id: "2345", author: "cuntingson" }
+    {} as IBook
   ]);
 
 
 
   const addbook = (title: string, author: string) => {
     setBooks([
-      ...books, { title, author, id: uuidv4() },
+      ...books, { title, author, id:"djkd" },
     ])
   }
   const removeBook = (id: string) => {

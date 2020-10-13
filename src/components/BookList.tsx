@@ -3,15 +3,10 @@ import React, { useContext } from "react";
 import { BookContext } from '../context/BookContextNew'
 import { BookDetails } from "./BookDetails";
 
-
-
-
-
-
 export type Books = {
   title: string
   id: string
-  author: string 
+  author: string
 }
 
 export default function BookList() {
@@ -28,11 +23,11 @@ export default function BookList() {
           return <BookDetails book={book} key={book.id} />
         })}
       </ul>
-     
+
     </div>
 
   ) : (
-      <h1>You have read all the books in the list. Good for you... Nerd! </h1>
+      <div className="empty">You have read all the books in the list. Good for you... Nerd! </div>
     )
 
 }

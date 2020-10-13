@@ -3,12 +3,12 @@ import { BookContext } from '../context/BookContextNew'
 import { Books } from './BookList'
 
 
-type BookDetails = {
+export type BookDetailsType = {
     book: Books
 }
 
 
-export const BookDetails = ({ book }: BookDetails) => {
+export const BookDetails = ({ book }: BookDetailsType) => {
 
     const { removeBook } = useContext(BookContext)
     return (

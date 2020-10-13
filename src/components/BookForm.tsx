@@ -12,15 +12,17 @@ export const BookForm = () => {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
         e.preventDefault()
         addbook(title, author)
-      console.log(title, author);
-      
+        setTitle('');
+        setAuthor('');
+        console.log(title, author);
+
     }
 
     return (
         <form onSubmit={handleSubmit}>
-            <input type="text" value={title} onChange={e => setTitle(e.target.value)} required />
-            <input type="text" value={author} onChange={e => setAuthor(e.target.value)} required />
-            <input type="submit"  />
+            <input type="text" value={title} onChange={e => setTitle(e.target.value)} required placeholder="Book Title"/>
+            <input type="text" value={author} onChange={e => setAuthor(e.target.value)} required  placeholder="Author"/>
+            <input type="submit" value="Add Book"/>
         </form>
 
     )
