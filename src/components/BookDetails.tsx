@@ -10,15 +10,15 @@ export type BookDetailsType = {
 
 export const BookDetails = ({ book }: BookDetailsType) => {
 
-    const { removeBook } = useContext(BookContext)
+    const { dispatch } = useContext(BookContext)
     return (
-        <li onClick={()=>removeBook(book.id)}>
-            <div className="title">
-                {book.title}
+        <li onClick={() => dispatch({type:'REMOVE_BOOK', id: book.id})}>
+            <div >
+               <h3  className="title container"> <span className="bookDetails">Title </span> {book.title}</h3> 
             </div>
 
-            <div className="author">
-                {book.author}
+            <div >
+               <h4 className="author container"><span className="bookDetails">Author </span>{book.author}</h4> 
             </div>
         </li>
     )

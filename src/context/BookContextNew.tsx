@@ -1,4 +1,5 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useReducer, useEffect } from "react";
+import { Reduser } from "../reducers/Reduser";
 
 
 export interface IBook {
@@ -9,8 +10,7 @@ export interface IBook {
 
 export interface IBookContext {
   books: IBook[];
-  addbook: (a: string, b: string) => void;
-  removeBook: (a: string) => void;
+  dispatch: any
 
 }
 
@@ -21,23 +21,16 @@ type Props = {
 export const BookContext = createContext<IBookContext>({} as IBookContext);
 
 export const BookContextProvider: React.FC = ({ children }: Props) => {
-  const [books, setBooks] = useState<IBook[]>([
-    {} as IBook
-  ]);
+  const [books, dispatch] = useReducer(Reduser, [], ():IBook[]=> {
+    const localData = localStorage.getItem('books');
+   return localData ? JSON.parse(localData) : [];
+  });
 
-
-
-  const addbook = (title: string, author: string) => {
-    setBooks([
-      ...books, { title, author, id:"djkd" },
-    ])
-  }
-  const removeBook = (id: string) => {
-    setBooks(books.filter(book => book.id !== id))
-  }
-
+  useEffect(() => {
+    localStorage.setItem('books', JSON.stringify(books))
+  }, [books]);
   return (
-    <BookContext.Provider value={{ books, addbook, removeBook }}>
+    <BookContext.Provider value={{ books, dispatch }}>
       {children}
     </BookContext.Provider>
   );

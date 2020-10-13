@@ -27,7 +27,7 @@ export default function BookList() {
     </div>
 
   ) : (
-      <div className="empty">You have read all the books in the list. Good for you... Nerd! </div>
+      <div className="empty">You have read all the books on the list. Add some more to pump in that sweet Knowledge! </div>
     )
 
 }
